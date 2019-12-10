@@ -8,15 +8,12 @@ exports.up = function(knex) {
         .notNullable();
 
         tbl.string('make',50)
-        .unique()
         .notNullable();
 
         tbl.string('model',18)
-        .unique()
         .notNullable();
 
         tbl.integer('mileage',13)
-        .unique()
         .notNullable();
 
         tbl.string('transmission_type', 50)
@@ -29,5 +26,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  
+    return knex.schema.dropTableIfExists('cars')
 };
