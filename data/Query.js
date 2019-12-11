@@ -36,10 +36,19 @@ const DeleteCar =(id)=>{
     .del()
 }
 
+const GetCarTotalSale = (id)=>{
+    return db('cars')
+    .sum('Price as TotalSales')
+    .innerJoin('sales', 'cars.id', 'sales.CarId')
+    .where('cars.id', id)
+    
+}
+
 module.exports ={
     getAll,
     getById,
     postCar,
     EditCar,
-    DeleteCar
+    DeleteCar,
+    GetCarTotalSale
 }

@@ -59,4 +59,16 @@ router.delete('/:id', (req,res)=>{
     })
 })
 
+router.get('/:id/sales', (req,res)=>{
+    const id = req.params.id;
+
+    Qs.GetCarTotalSale(id)
+    .then(TotalSales=>{
+        res.status(200).json({TotalSales})
+    })
+    .catch((err)=>{
+        res.status(500).json({err})
+    })
+})
+
 module.exports = router;
